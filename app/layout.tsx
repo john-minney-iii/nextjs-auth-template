@@ -9,6 +9,9 @@ import NextAuthProvider from '@/context/NextAuthProvider'
 import { getServerSession } from 'next-auth/next';
 import authOptions from '@/src/util/next-auth-options';
 
+// Components
+import Navbar from '@/src/components/Navbar';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -27,7 +30,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider session={session}>
-          {children}
+          <div className='flex flex-col md:flex-row'>
+            <Navbar />
+            {children}
+          </div>
         </NextAuthProvider>
       </body>
     </html>
